@@ -1,0 +1,14 @@
+#clock-container {
+    y: 50%-60;
+}
+#hrm-container{
+  x:0;
+  y:75%;
+}
+#hrm-container #hrm-text-container{
+  x:50;
+}
+#steps-container{
+  x:130;
+  y:75%;
+}
