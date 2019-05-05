@@ -3,6 +3,8 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="device.css" />
     <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.gui" />
+    <link rel="import" href="/mnt/sysassets/widgets/cycleview_widget.gui" />
     <symbol id="heart-beat">
       <g transform="translate(50%,50%)">
         <image id="icon" x="-50%" y="-50%" href="images/stat_hr_solid_48px.png" />

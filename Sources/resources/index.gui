@@ -46,31 +46,88 @@
       <image />
     </svg>
   </svg>
-  <svg id="steps-container">
-    <svg class="steps-arc-container">
-      <arc class="arc-background"/>
-      <circle/>
-      <arc/>
-      <image/>
-    </svg>
-    <svg class="steps-text-container">
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-        <image />
-    </svg>
-  </svg>
+  <use id="stats-container" href="#cycleview">
+    <use href="#cycleview-item" id="steps-container">
+        <svg class="stats-arc-container">
+          <arc class="arc-background"/>
+          <circle/>
+          <arc/>
+          <image/>
+        </svg>
+        <svg class="stats-text-container">
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+        </svg>
+    </use>
+    <use href="#cycleview-item" id="cals-container">
+        <svg class="stats-arc-container">
+          <arc class="arc-background"/>
+          <circle/>
+          <arc/>
+          <image/>
+        </svg>
+        <svg class="stats-text-container">
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+        </svg>
+    </use>
+    <use href="#cycleview-item" id="am-container">
+        <svg class="stats-arc-container">
+          <arc class="arc-background"/>
+          <circle/>
+          <arc/>
+          <image/>
+        </svg>
+        <svg class="stats-text-container">
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+        </svg>
+    </use>
+    <use href="#cycleview-item" id="dist-container">
+        <svg class="stats-arc-container">
+          <arc class="arc-background"/>
+          <circle/>
+          <arc/>
+          <image/>
+        </svg>
+        <svg class="stats-text-container">
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+            <image />
+        </svg>
+    </use>
+  </use>  
 </svg>

@@ -36,6 +36,12 @@ function getImage(str:string) : string{
   return `images/${str}.png`;
 }
 
+export function display(text: string, controls: ImageElement[]) {
+  for (let i = 0; i < controls.length; i++) {
+    controls[i].href = getImageFromLeft(text, i);
+  }
+}
+
 export function activityToAngle(activityGoal:number, activityToday:number):number
 {
   if(activityGoal<=0) {

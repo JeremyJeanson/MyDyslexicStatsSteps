@@ -26,9 +26,10 @@ const _batteriesContainer = document.getElementById("battery-container") as Grap
 const _batteries = _batteriesContainer.getElementsByTagName("image") as ImageElement[];
 
 // Stats
-// const arcSteps = document.getElementById("arc-steps") as ArcElement;
-// const stepsAchivement = document.getElementById("steps-achivement-container") as GraphicsElement;
-const stepsContainer = document.getElementById("steps-container") as GraphicsElement;
+const _stepsContainer = document.getElementById("steps-container") as GraphicsElement;
+const _calsContainer = document.getElementById("cals-container") as GraphicsElement;
+const _amContainer = document.getElementById("am-container") as GraphicsElement;
+const _distContainer = document.getElementById("dist-container") as GraphicsElement;
 
 // Heart rate management
 const hrmContainer = document.getElementById("hrm-container") as GroupElement;
@@ -122,60 +123,48 @@ simpleSettings.initialize((settings: any) => {
 // --------------------------------------------------------------------------------
 // Activity
 // --------------------------------------------------------------------------------
-import { goals, today } from "user-activity";
-let lastStepsGoals = -1;
-let lastSteps = -1;
+import * as simpleActivities from "./simple/activities"
 
-goals.onreachgoal = (evt) => {
-  UpdateActivities();
-};
+// Initi
+simpleActivities.initialize(UpdateActivities);
 
 // Update Activities informations
 function UpdateActivities() {
-  let actualStepsGoals = goals.steps || 0;
-  let actualSteps = today.local.steps || 0;
-  if (actualSteps != lastSteps
-    || actualStepsGoals != lastStepsGoals) {
-    UpdateActivity(stepsContainer, actualStepsGoals, actualSteps);
-    lastSteps = actualSteps;
-    lastStepsGoals = actualStepsGoals;
+  // Get activities
+  const activities = simpleActivities.getNewValues();
+
+  // Steps
+  if (activities.steps !== undefined) {
+    UpdateActivity(_stepsContainer, activities.steps);
+  }
+
+  // Calories
+  if (activities.calories !== undefined) {
+    UpdateActivity(_calsContainer, activities.calories);
+  }
+
+  // Active minutes
+  if (activities.activeMinutes !== undefined) {
+    UpdateActivity(_amContainer, activities.activeMinutes);
+  }
+
+  // Disance
+  if (activities.distance !== undefined) {
+    UpdateActivity(_distContainer, activities.distance);
   }
 }
 
-function UpdateActivity(container: GraphicsElement, goal: number, achieved: number): void {
-  let achievedString = achieved.toString();
+function UpdateActivity(container: GraphicsElement, activity: simpleActivities.Activity): void {
+  let achievedString = activity.actual.toString();
   let containers = container.getElementsByTagName("svg") as GraphicsElement[];
 
   // Arc
-  RenderActivity(containers[0], goal, achieved);
+  simpleActivities.updateActivityArc(containers[0], activity, background.style.fill);
 
   // Text
   // container.x = device.screen.width / 2 + 20 - (achievedString.toString().length * 20);
   let texts = containers[1].getElementsByTagName("image") as ImageElement[];
-  for (let i = 0; i < texts.length; i++) {
-    texts[i].href = util.getImageFromLeft(achievedString, i);
-  }
-}
-
-// Render an activity
-function RenderActivity(container: GraphicsElement, goal: number, achieved: number): void {
-  let arc = container.getElementsByTagName("arc")[1] as ArcElement; // First Arc is used for background
-  let circle = container.getElementsByTagName("circle")[0] as CircleElement;
-  let image = container.getElementsByTagName("image")[0] as ImageElement;
-
-  // Goals ok
-  if (achieved >= goal) {
-    circle.style.display = "inline";
-    arc.style.display = "none";
-    image.style.fill = background.style.fill;
-  }
-  else {
-    circle.style.display = "none";
-    arc.style.display = "inline";
-    arc.sweepAngle = util.activityToAngle(goal, achieved);
-    if (container.style.fill)
-      image.style.fill = container.style.fill;
-  }
+  util.display(achievedString, texts);
 }
 // --------------------------------------------------------------------------------
 // Heart rate manager
