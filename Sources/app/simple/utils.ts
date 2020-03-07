@@ -32,6 +32,10 @@ function getImage(str:string) : string{
     case "%": 
       str = "pourcent";
       break;
+    case ".": 
+    case ",": 
+      str = "dot";
+      break;
   }       
   return `images/${str}.png`;
 }

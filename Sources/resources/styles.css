@@ -20,6 +20,7 @@
 }
 #date-container {
   y: 2;
+  height: 40;
 }
 #date-container image{
   x:$;
@@ -103,20 +104,20 @@
 }
 
 #steps-container .stats-arc-container{
-  fill:lightblue;
+  fill:#FF0000;
 }
 #steps-container .stats-arc-container image{
   href:"images/stat_steps_solid_48px.png";
 }
 
 #cals-container .stats-arc-container{
-  fill:orange;
+  fill:#FF8000;
 }
 #cals-container .stats-arc-container image{
   href:"images/stat_cals_solid_48px.png";
 }
 #am-container .stats-arc-container{
-  fill:yellow;
+  fill:green;
 }
 #am-container .stats-arc-container image{
   href:"images/stat_am_solid_48px.png";

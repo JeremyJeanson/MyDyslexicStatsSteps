@@ -6,13 +6,15 @@ import { user } from "user-profile";
 type DefaultZone = 'out-of-range' | 'fat-burn' | 'cardio' | 'peak';
 type UserDefinedZone = 'below-custom' | 'custom' | 'above-custom';
 
-let hrm:HeartRateSensor;
-let watchID:number;
-let hrmCallback:(newValue:boolean, bpm:number, zone:DefaultZone|UserDefinedZone, restingHeartRate:number)=>void;
+let hrm: HeartRateSensor;
+let watchID: number;
+let hrmCallback: (newValue: boolean, bpm: number, zone: DefaultZone | UserDefinedZone, restingHeartRate: number) => void;
 let lastReading = 0;
 
-export function initialize(callback:(newValue:boolean, bpm:number, zone:DefaultZone|UserDefinedZone, restingHeartRate:number)=>void) : void {
-  if (me.permissions.granted("access_heart_rate") && me.permissions.granted("access_user_profile")) {
+export function initialize(callback: (newValue: boolean, bpm: number, zone: DefaultZone | UserDefinedZone, restingHeartRate: number) => void): void {
+  if (HeartRateSensor
+    && me.permissions.granted("access_heart_rate")
+    && me.permissions.granted("access_user_profile")) {
     hrmCallback = callback;
     hrm = new HeartRateSensor();
     setupEvents();
@@ -24,11 +26,11 @@ export function initialize(callback:(newValue:boolean, bpm:number, zone:DefaultZ
   }
 }
 
-function getReading() : void {
+function getReading(): void {
   let newValue = hrm.timestamp !== lastReading;
   let heartRate = hrm.heartRate || 0;
   lastReading = hrm.timestamp;
-  
+
   hrmCallback(
     newValue,
     heartRate,
@@ -36,9 +38,9 @@ function getReading() : void {
     user.restingHeartRate);
 }
 
-function setupEvents() : void {
+function setupEvents(): void {
   // Dispay chanded
-  display.onchange = (e)=> {
+  display.onchange = (e) => {
     if (display.on) {
       start();
     } else {
@@ -46,12 +48,12 @@ function setupEvents() : void {
     }
   };
   // Errors
-  hrm.onerror = (e)=>{
+  hrm.onerror = (e) => {
     hrmCallback(false, 0, null, null);
   };
 }
 
-function start() : void {
+function start(): void {
   if (!watchID) {
     hrm.start();
     getReading();
@@ -59,7 +61,7 @@ function start() : void {
   }
 }
 
-function stop() : void {
+function stop(): void {
   hrm.stop();
   clearInterval(watchID);
   watchID = null;

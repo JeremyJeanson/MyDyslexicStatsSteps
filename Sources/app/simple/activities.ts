@@ -2,6 +2,7 @@ import * as utils from "./utils";
 // To know user activities
 import { goals, today } from "user-activity";
 import { me as appbit } from "appbit";
+import { units } from "user-settings";
 
 // Types used as result
 export class Activities {
@@ -63,7 +64,7 @@ export function getNewValues(): Activities {
     const steps = new Activity(today.local.steps, goals.steps);
     const calories = new Activity(today.local.calories, goals.calories);
     const activeMinutes = new Activity(today.local.activeMinutes, goals.activeMinutes);
-    const distance = new Activity(today.local.distance, goals.distance);
+    const distance = getDistances();
 
     if (valueChanged(steps, _lastSteps)) {
         _lastSteps = steps;
@@ -91,6 +92,24 @@ export function getNewValues(): Activities {
 
     // Return the result
     return result;
+}
+
+// Get Distances based on user units
+function getDistances(): Activity {
+    // Metric
+    if (units.distance === "metric") {
+        return new Activity(today.local.distance, goals.distance);
+    }
+    // Us
+    // Then metric->miles
+    return new Activity(
+        metrics2Miles(today.local.distance),
+        metrics2Miles(goals.distance));
+}
+
+// Convert metric to milles
+function metrics2Miles(value: number): number {
+    return (value * 0.00062137).toFixed(2) as unknown as number;
 }
 
 // Test if a activity has changed
