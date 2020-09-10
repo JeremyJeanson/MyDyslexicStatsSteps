@@ -5,17 +5,21 @@
   "repository": {},
   "devDependencies": {
     "@fitbit/sdk": "4.1.0",
-    "@fitbit/sdk-cli": "1.7.1",
-    "fitbit-sdk-types": "4.3.5"
+    "@fitbit/sdk-cli": "1.7.3",
+    "fitbit-sdk-types": "4.3.9",
+    "tslib": "2.0.1",
+    "simple-fitbit-settings": "2.0.1",
+    "simple-fitbit-activities": "0.0.1"
   },
   "fitbit": {
     "appUUID": "397305ce-1df6-4ffc-b153-f34b75be5e57",
     "appType": "clockface",
     "appDisplayName": "MyDyslexicSteps",
     "requestedPermissions": [
-      "access_activity",
       "access_heart_rate",
-      "access_user_profile"
+      "access_activity",
+      "access_user_profile",
+      "access_aod"
     ],
     "buildTargets": [
       "higgs",

@@ -36,6 +36,9 @@ function getImage(str:string) : string{
     case ",": 
       str = "dot";
       break;
+    case "?":
+      str="question";
+      break;
   }       
   return `images/${str}.png`;
 }
@@ -44,16 +47,4 @@ export function display(text: string, controls: ImageElement[]) {
   for (let i = 0; i < controls.length; i++) {
     controls[i].href = getImageFromLeft(text, i);
   }
-}
-
-export function activityToAngle(activityGoal:number, activityToday:number):number
-{
-  if(activityGoal<=0) {
-    return 0;
-  }
-  if(activityGoal)
-  {
-    return (activityToday||0) * 360 / activityGoal;
-  }
-  return 0;
 }
