@@ -64,11 +64,13 @@
     </use>
   </use>
   <svg id="battery-container">
-    <image class="battery-image" />
-    <image x="28"/>
-    <image />
-    <image />
-    <image />
+    <use id="battery-symbol" href="#battery"/>
+    <svg id="battery-text">
+      <image/>
+      <image />
+      <image />
+      <image />
+    </svg>
   </svg>
   <svg id="hrm-container">
     <use id="iconHRM" href="#heart-beat" />

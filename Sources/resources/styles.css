@@ -16,7 +16,7 @@
 }  
 #clock-container .clock-doublepoints{
   width:25;
-  href:"images/doublepoints.png";
+  href:"chars/58.png";
 }
 #date-container {
   y: 2;
@@ -27,19 +27,24 @@
   width: 20;
   height: 40;
 }
+/* Battery */
 #battery-container{
   height: 30;
-  width: 100;
-  y:10;  
+  y:10;
+  x:10;  
 }
-#battery-container image{
-  x:$;
+#battery-symbol{
+  y:-3;
   width: 24;
   height: 24;
 }
-#battery-container .battery-image{
-  x: 2;
-  href:"images/battery.png";
+#battery-text{
+  x:30;
+}
+#battery-text image{
+  x:$;
+  width: 24;
+  height: 24;
 }
 #battery-bar-container{
   x: 0;
@@ -120,7 +125,7 @@
   fill:green;
 }
 #am-container .stats-arc-container image{
-  href:"images/stat_am_solid_48px.png";
+  href:"images/stat_azm_solid_48px.png";
 }
 #dist-container .stats-arc-container{
   fill:blue;
