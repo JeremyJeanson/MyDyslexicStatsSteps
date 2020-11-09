@@ -1,0 +1,28 @@
+#battery-bar-container{
+  x: 60;
+  height: 10;
+  width: 100%-120;
+}
+#battery-container{
+  x:26;  
+  y:26;
+}
+#date-container {
+  y: 26;
+  height: 40;
+}
+
+#clock-container {
+  y: 80;
+}
+#hrm-container{
+  x:80;
+  y:200;
+}
+#hrm-container #hrm-text-container{
+  x:56;
+}
+#stats-container{
+  x:80;
+  y:260;
+}
